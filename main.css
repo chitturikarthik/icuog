@@ -1,0 +1,221 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('BG_Img.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Added a semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #4e2470; /* Purple color for the text */
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #4e2470; /* Purple color for the text */
+}
+
+ol {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 15px;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #7c3b91; /* Purple background color */
+    color: #fff; /* White text color */
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+}
+
+a:hover {
+    background-color: #9c5daf; /* Lighter purple on hover */
+    color: #ffffff;
+}
+
+/* Added styles for the navigation bar */
+.navbar {
+    background-color: #4e2470; /* Dark purple for the navbar */
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.navbar a {
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #4e2470; /* Slightly lighter purple on hover */
+}
+
+/* Styles for the images */
+.image-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 120px; /* Adjust the width as needed */
+    height: auto;
+}
+
+.content {
+    padding: 20px;
+    color: #4e2470; /* Purple color for the text */
+    align-content: center; 
+}
+
+.content-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.box {
+    flex: 0 1 calc(33.33% - 20px);
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #4e2470; /* Purple color for the text */
+    transition: all 0.3s ease;
+    margin-bottom: 20px; /* Margin added to separate boxes */
+}
+
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+p,
+ul,
+ol {
+    margin-top: 0;
+}
+
+
+/* Style for the container in quiz */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    margin-top: 25px;
+    background-color: #B78BBF; /* Light background */
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+}
+
+#quiz-window {
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+}
+
+#quiz-area {
+    font-size: 1.0em;
+    margin-bottom: 20px;
+}
+
+.user-input {
+    width: 100%;
+    padding: 2px;
+    margin-bottom: 20px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.submit-btn {
+    padding: 12px 24px;
+    font-size: 1em;
+    background-color: #4e2470; 
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #7c3b91; 
+}
+
+.score {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+
+.contact-content {
+    display: flex;
+    align-items: center;
+
+}
+
+.details {
+    margin-left: 25px;    
+}
+
+.gif-container {
+    max-width: auto;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.4); /* Added a semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    }
+
+.gif-container img {
+    width: 400px; /* Adjust the width as needed */
+    height: auto;
+    align-items: center;
+    align-content: center;
+}

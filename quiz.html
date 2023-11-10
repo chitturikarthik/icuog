@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Bot</title>
+    <link rel="stylesheet" href="main.css"> 
+</head>
+<body>
+    <div class="navbar">
+        <div class="image-container">
+            <img src="images/isuog.png" alt="Image 1">
+            <img src="images/iisc.png" alt="Image 2">
+            <img src="images/cpdm.png" alt="Image 3">
+            <img src="images/utsaah.png" alt="Image 4">
+
+        </div>
+        <!-- <img src="your_image_path.jpg" alt="ISUOG Training" style="width: 200px; height: auto;"> 
+        <h1>ISUOG Training</h1> -->
+        <a href="ISUOG.html">Home</a>
+        <a href="https://www.isuog.org/static/14628c56-efe6-489f-992fe80fb6c606ce/6ebca728-93d2-4f4c-b37f70fe073e7a69/Lecture-9-The-6-step-approach.pdf" target="_blank"> Learning </a>
+        <a href="training.html">Training</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="#examples">Examples</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="main-container">
+        <div id="quiz-window" class="quiz-container">
+            <div id="quiz-area" class="question"></div>
+            <input type="text" id="user-input" placeholder="Type your answer here..." class="user-input">
+            <button onclick="submitAnswer()" class="submit-btn">Next</button>
+            <div id="score-area" class="score"></div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { question: "What is the main objective of the standardized six-step approach in the focused basic obstetric ultrasound examination?", answer: "To evaluate fetal presentation, cardiac activity, multiple pregnancy, placental localization, amniotic fluid volume, and biometric measurements." },
+            { question: "How many pregnant women were enrolled in the study for the new standardized approach, and within what gestation range?", answer: "200 pregnant women were enrolled, between 18þ0 and 36þ6 weeks of gestation." },
+            { question: "What specific components does the standardized approach aim to assess?", answer: "Fetal presentation, fetal cardiac activity, multiple pregnancy, placental localization, amniotic fluid volume evaluation, and biometric measurements." },
+            { question: "What were the findings from the ultrasound examinations between the regular and the new approach?", answer: "Substantial to perfect agreement (Kappa value between 0.64 and 1.00) was observed between the two approaches." },
+            { question: "What agreement level was observed between the new standardized six-step approach and the regular approach?", answer: "Substantial to perfect agreement (Kappa value between 0.64 and 1.00)." },
+            { question: "How was the focused basic obstetric ultrasound examination validated?", answer: "Through the comparison of findings obtained from the new standardized six-step approach with the regular approach." },
+            { question: "For what scenarios can the standardized six-step approach be beneficial?", answer: "It can be beneficial in limited resource settings and in point-of-care obstetric ultrasound applications." },
+            { question: "What does the six-step approach of the focused basic obstetric ultrasound examination involve?", answer: "Fetal presentation, fetal cardiac activity, multiple pregnancy, placental localization, amniotic fluid volume evaluation, and biometric measurements." },
+            { question: "What was the aim of the study regarding the focused basic obstetric ultrasound examination?", answer: "To prospectively validate the examination and compare its performance to the scheduled obstetric ultrasound examination." },
+            { question: "What approval was obtained for the observational cohort study?", answer: "Approval from the Institutional Review Board of Eastern Virginia Medical School." },
+            { question: "What type of ultrasound equipment was used for the examinations?", answer: "Voluson E8 (Expert edition) ultrasound equipment." },
+            { question: "What specific steps were followed in the focused basic ultrasound examination?", answer: "Fetal presentation, fetal cardiac activity, multiple pregnancy, placental localization, amniotic fluid volume evaluation, and biometric measurements." },
+            { question: "What does Step 1 in the six-step approach determine?", answer: "Fetal presentation." },
+            { question: "How does the transducer placement vary for detecting fetal presentation in Step 1?", answer: "Placed transversely in the lower abdomen just above the symphysis pubis, angled inferiorly toward the cervix." },
+            { question: "What does Step 2 of the focused basic ultrasound examination involve?", answer: "Detection of fetal cardiac activity." },
+            { question: "What transducer movements were performed to detect fetal cardiac activity in Step 2?", answer: "Placed transversely in the lower abdomen toward the umbilicus, and moved to the left and/or the right lateral side of the abdomen." },
+            { question: "How is the number of fetuses in the uterus identified in Step 3?", answer: "By scanning the uterus in different orientations and identifying the number of fetal heads." },
+            { question: "What transducer orientation and movement are employed to identify the number of fetuses in the uterus?", answer: "Transverse orientation in the right lower abdomen, moved cephalad toward the right upper abdomen, and then in a sagittal orientation." },
+            { question: "What does Step 3 aim to identify in the uterus?", answer: "The number of fetal heads (crania) within the uterus, indicating multiple pregnancy." },
+            { question: "What does Step 4 focus on in the obstetric ultrasound examination?", answer: "Location and position of the placenta." },
+            { question: "How is the placental localization assessed in Step 4?", answer: "Transducer placed in a sagittal orientation, moving from the uterine fundus toward the lower abdomen on different sides." },
+            { question: "What fluid volume is evaluated in Step 5 of the focused basic ultrasound examination?", answer: "Amniotic fluid volume." },
+            { question: "What assessment is made in Step 5 regarding amniotic fluid?", answer: "Normal, oligohydramnios, or polyhydramnios." },
+            { question: "What equipment was used for the ultrasound examinations?", answer: "Voluson E8 (Expert edition) ultrasound equipment." },
+            { question: "How does the transducer placement vary for detecting fetal presentation in Step 1?", answer: "The transducer is placed transversely in the lower abdomen just above the symphysis pubis and angled inferiorly toward the cervix." },
+            { question: "What movements are performed in Step 2 to detect fetal cardiac activity?", answer: "Moving the transducer from the mid-abdomen to the left and/or right lateral side of the abdomen while maintaining the transverse orientation." },
+            { question: "How is the number of fetuses in the uterus determined in Step 3?", answer: "By identifying the number of fetal heads (crania) within the uterus." },
+            { question: "What is assessed in Step 4 regarding the placental localization?", answer: "The location and position of the placenta, including if it's normal, low-lying, or previa." },
+            { question: "What fluid volume is evaluated in Step 5 of the examination?", answer: "Amniotic fluid volume." },
+            { question: "How is the maximum vertical pocket (MVP) measured in Step 5?", answer: "By placing calipers in a straight vertical line, avoiding any cord and fetal parts in the image." }, { question: "What are the components involved in Step 6 of the focused basic obstetric ultrasound examination?", answer: "Measurement of biparietal diameter (BPD), head circumference, abdominal circumference (AC), and femur length in the traditional manner." },
+            { question: "Why does the study design not permit the evaluation of competency in performing biometric measurements?", answer: "The study operator was skilled in obstetrical ultrasound, not allowing for an assessment of competency in this particular step." },
+            { question: "Why is Step 6 considered the most challenging to teach in the focused basic ultrasound examination?", answer: "It requires standardized fetal planes with appropriate caliper placement, making it technically complex to teach." },
+            { question: "What is the subject of a future study concerning the focused basic ultrasound examination?", answer: "Evaluating the competency of each step in health care workers with no prior ultrasound training." },
+            { question: "Who conducted the scheduled obstetric ultrasound examination following the focused basic examination?", answer: "A registered sonographer blinded to the results of the focused basic examination." },
+            { question: "What guidelines did the scheduled obstetric ultrasound examinations comply with?", answer: "National guidelines for the performance of obstetric ultrasound examination by the American Institute of Ultrasound in Medicine." },
+            { question: "Under what circumstances was a transvaginal ultrasound examination performed?", answer: "If a low-lying placenta or placenta previa was suspected during the scheduled obstetric ultrasound examination." },
+            { question: "How was the interobserver variability assessed?", answer: "Saved still images (of steps 3–4) and video clips (of steps 1–2) were remotely reviewed by two reviewers proficient in obstetric ultrasound." },
+            { question: "What software was used for the statistical analysis of the study results?", answer: "SPSS 15.0 (SPSS Inc., Chicago, IL)." },
+            { question: "What does a p-value less than 0.05 indicate in the statistical analysis?", answer: "Statistically significant results." },
+            { question: "What value of Kappa is generally considered good in the agreement between two approaches?", answer: "Kappa value greater than 0.40." },
+            { question: "How was the agreement between the two approaches in continuous variables also evaluated?", answer: "By using the coefficient of variation (CV)." },
+            { question: "How many pregnant women were enrolled in the study?", answer: "A total of 200 pregnant women." },
+            { question: "Between what time frame were the pregnant women enrolled in the study?", answer: "December 18, 2013, and May 2, 2014." },
+            { question: "What was the significant difference observed in the demographic data between the second and third trimester groups?", answer: "Body mass index (BMI) differed significantly (29.9 kg/m2 in the second trimester vs. 32.1 kg/m2 in the third trimester)." },
+            { question: "What was the average time spent on the focused basic ultrasound examination in the second and third trimesters?", answer: "Less than 5 minutes in both second and third trimesters." },
+            { question: "What was the time spent on step 3 and step 6 in the third trimester?", answer: "Step 3: 30.2 seconds, Step 6: 154.2 seconds." },
+            { question: "Why is the short average time of the focused basic ultrasound examination significant?", answer: "It allows easy incorporation in prenatal care in short-staffed outreach settings." },
+            { question: "What was the best agreement found between the six-step approach and regular approach?", answer: "Step 1, with a kappa value of 0.95 in the third trimester." },
+            { question: "What assessment had the worst agreement between the two approaches?", answer: "Abdominal circumference (AC) measurements." },
+            { question: "Why did the study omit the review of fetal anatomy in the focused basic ultrasound examination?", answer: "To avoid a more complex examination, particularly when facilities in limited resource settings may not manage complex fetal congenital malformations." },
+            { question: "What possible reason was suggested for the discrepancies in results between the focused basic and scheduled obstetric ultrasound examinations?", answer: "Change in fetal position between examinations, such as the evaluation of amniotic fluid volume." },
+            { question: "What impact has the introduction of ultrasound had on prenatal care?", answer: "Positive impact on pregnancy outcomes by revising inaccurate dating, diagnosing multiple gestations, and identifying placental and amniotic fluid abnormalities, among other benefits." },
+            { question: "What do studies on limited obstetric ultrasound utilization in Uganda and the Thai–Burmese border demonstrate?", answer: "High sensitivity and specificity in diagnosing fetal conditions, suggesting accurate fetal biometric measurements by locally trained healthcare workers." },
+            { question: "What significant role has ultrasound played in limited resource settings?", answer: "Identifying high-risk pregnancies and directing their care to suitable hospital settings that can manage pregnancy complications." },
+            { question: "Why is the standardized approach in the focused basic ultrasound examination significant for ultrasound training?", answer: "It reduces the operator dependency of ultrasound, making training and competency evaluation more effective." },
+            { question: "What did the study results suggest about the average time spent on the focused basic ultrasound examination?", answer: "The average time was less than 5 minutes, a short duration compared to routine ultrasound examinations." },
+            { question: "What is the role of remote review in the context of the standardized ultrasound approach?", answer: "The acquisition of images and clips in a standardized fashion, improving remote reading and making diagnostic errors less likely." },
+            { question: "What are the potential benefits of the standardized six-step approach in a telemedicine program?", answer: "Standardized ultrasound steps can help avoid diagnostic errors and make remote review feasible." },
+            { question: "What potential does the standardized six-step approach hold for ultrasound training in limited resource settings?", answer: "It has the potential to be of substantial benefit and may aid in enhancing ultrasound training in such settings." }
+            
+        ];
+
+
+        const selectedQuestions = selectRandomQuestions(questions, 10);
+        let currentQuestionIndex = 0;
+        let userScore = 0;
+
+        function selectRandomQuestions(questions, count) {
+            const shuffled = questions.sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        function displayQuestion() {
+            const quizArea = document.getElementById("quiz-area");
+            quizArea.innerHTML = `<div>${selectedQuestions[currentQuestionIndex].question}</div>`;
+        }
+
+        function submitAnswer() {
+            const userAnswer = document.getElementById("user-input").value;
+            const correctAnswer = selectedQuestions[currentQuestionIndex].answer;
+
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                userScore++;
+            }
+
+            if (currentQuestionIndex == 10) {
+                const scoreArea = document.getElementById("score-area");
+                scoreArea.innerHTML = `<div>Score: ${userScore} out of ${currentQuestionIndex + 1}</div>`;
+            }            
+
+            currentQuestionIndex++;
+            document.getElementById("user-input").value = "";
+
+            if (currentQuestionIndex < 10) {
+                displayQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            const quizArea = document.getElementById("quiz-area");
+            quizArea.innerHTML = "<div> Quiz complete </div>";
+            const scoreArea = document.getElementById("score-area");
+            scoreArea.innerHTML = `<div>Your final score is: ${userScore} out of 10</div>`;
+        }
+
+
+
+        // Display the first question when the page loads
+        displayQuestion();
+
+    </script>
+
+    <div class="container">
+    <p>Quiz based on "Zhao, Y., Abuhamad, S., Sinkovskaya, E., Rao, R., Kanaan, C., Platt, L., & Abuhamad, A. (2015). Standardized Six-Step Approach to the Performance of the Focused Basic Obstetric Ultrasound Examination. American Journal of Perinatology, 33(01), 090–098. doi:10.1055/s-0035-1558828" </p> </div>
+</body>
+</html>
